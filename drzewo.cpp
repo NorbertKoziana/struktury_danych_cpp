@@ -85,11 +85,11 @@ int znajdzPoprzednikNastepnik(int liczba, bool poprzednik, bool wypisz) {//poprz
 	int ojciec = i / 2;
 	if (poprzednik) {//szukamy poprzednika
 		if (zapelniony[lewySyn(i)] != NULL) {//jesli mamy lewego syna to najwieksza wartosc w tej galezi jest poprzednikiem
-			if (wypisz) cout << "Poprzednik podanej liczby to: " << tablica[znajdzMaxLiczbe(prawySyn(i), 0)] << endl;//wyswietlam liczbe
-			return znajdzMaxLiczbe(prawySyn(i), 0);//zwracam indeks
+			if (wypisz) cout << "Poprzednik podanej liczby to: " << tablica[znajdzMaxLiczbe(lewySyn(i), 0)] << endl;//wyswietlam liczbe
+			return znajdzMaxLiczbe(lewySyn(i), 0);//zwracam indeks
 		}
 		else {//gdy nie mamy lewgo syna to szukamy ojca ktory ma nasza galaz po prawej stronie
-			while (ojciec > 1) {//jesli mamy tylko 1 element o i=1 oraz ojciec =0 czyli ten while sie nie wykona
+			while (ojciec >= 1) {//jesli mamy tylko 1 element o i=1 oraz ojciec =0 czyli ten while sie nie wykona
 				if (i == prawySyn(ojciec)) {//jesli tablica[i] jest prawym synem ojca to ojciec jest poprzednikiem
 					if(wypisz) cout << "Poprzednik podanej liczby to: " << tablica[ojciec] << endl;
 					return tablica[ojciec];
@@ -105,7 +105,7 @@ int znajdzPoprzednikNastepnik(int liczba, bool poprzednik, bool wypisz) {//poprz
 			return znajdzMinLiczbe(prawySyn(i), 0);
 		}
 		else {//gdy nie mamy prawego syna to szukamy ojca ktory ma nasza galaz po lewej stronie
-			while (ojciec > 1) {
+			while (ojciec >= 1) {
 				if (i == lewySyn(ojciec)) {//jesli poprzedni element czyli 
 					if(wypisz) cout << "Nastepnik podanej liczby to: " << tablica[ojciec] << endl;
 					return tablica[ojciec];
